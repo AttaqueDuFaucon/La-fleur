@@ -1,0 +1,121 @@
+$grey: #e8e8e8;
+$bg: #2f2f2f;
+$width: 100px;
+$flame: solid 5px #f96560;
+$blue: #a3d7ff;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: $bg;
+}
+
+.rocket {
+  position: relative;
+}
+
+.head {
+  width: $width;
+  height: $width * 1.5;
+  background: $grey;
+  border-top-right-radius: $width * 2;
+  border-top-left-radius: $width * 2;
+}
+
+// for window
+.head:after, .head:before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: $blue;
+  border-radius: 50%;
+  border: solid 4px white;
+}
+
+.head:before {
+  top: 13%;
+  left: 23%;
+}
+
+.head:after {
+  top: 30%;
+  left: 43%;
+}
+
+.tail {
+  position: relative;
+  width: $width;
+  height: $width;
+  background: $grey;
+}
+
+.tail:after, .tail:before {
+  content: '';
+  position: absolute;
+  bottom: -25%;
+  width: $width;
+  height: $width;
+  background: inherit;
+}
+
+.tail:before {
+  left: -99px;
+  -webkit-clip-path: polygon(100% 0, 30% 100%, 100% 100%);
+  clip-path: polygon(100% 0, 30% 100%, 100% 100%);
+}
+
+.tail:after {
+  left: $width; 
+  -webkit-clip-path: polygon(0 0, 0% 100%, 70% 100%);
+  clip-path: polygon(0 0, 0% 100%, 70% 100%);
+}
+
+.hi-txt {
+  position: absolute; 
+  top: 5%;
+  color: white;
+  font-weight: 300;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 3rem;
+}
+
+.flame {
+  position: absolute;
+  background: #ffc600;
+  width: $width / 2;
+  height: $width * 1.5;
+  border: $flame;
+  border-radius: 50%;
+  left: 20%;
+  bottom: -19%;
+  z-index: -1;
+  transition: all 0.3s ease;
+  animation: stretch 5s infinite;
+} 
+
+.flame:before, .flame:after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: $flame;
+  width: 20px;
+  height: 30px;
+  background: #ffc600;
+  top: 60%;
+}
+
+.flame:after {
+  left: -50%;
+} 
+
+.flame:before {
+  right: -50%;
+}
+
+@keyframes stretch {
+  from { transform: scale(0.7); }
+  to { transform: scale(1.1); }
+}
